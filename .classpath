@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/emily/eclipse/commons-io-2.8.0-bin/commons-io-2.8.0/commons-io-2.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/emily/eclipse/commons-logging-1.2-bin/commons-logging-1.2/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/emily/spring-5.3.4-dist/spring-framework-5.3.4/libs/spring-aop-5.3.4.jar"/>
@@ -9,5 +8,7 @@
 	<classpathentry kind="lib" path="C:/Users/emily/spring-5.3.4-dist/spring-framework-5.3.4/libs/spring-context-5.3.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/emily/spring-5.3.4-dist/spring-framework-5.3.4/libs/spring-core-5.3.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/emily/spring-5.3.4-dist/spring-framework-5.3.4/libs/spring-expression-5.3.4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
