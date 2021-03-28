@@ -1,5 +1,6 @@
 package com.online.system.model.facility;
 
+/* This class is used to assign an address to each facility */
 public class Address implements IAddress {
 
 	private String street;
@@ -19,52 +20,52 @@ public class Address implements IAddress {
 		this.zipcode = zipcode;
 	}*/
 	
-	//Get street
+	//Return the Street Address
 	public String getStreet() {
 		return this.street;
 	}
 	
-	//Set street
+	//Set the Street Address
 	public void setStreet(String street) {
 		this.street = street;
 	}
 	
-	//Get unit
+	//Return the Building Unit Number
 	public String getUnit() {
 		return this.unit;
 	}
 	
-	//Set unit
+	//Set the Building Unit Number
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
 	
-	//Get city
+	//Return the City
 	public String getCity() {
 		return this.city;
 	}
 	
-	//Set city
+	//Set the City
 	public void setCity(String city) {
 		this.city = city;
 	}
 	
-	//Get state
+	//Return the State
 	public String getState() {
 		return this.state;
 	}
 	
-	//Set state
+	//Set the State
 	public void setState(String state) {
 		this.state = state;
 	}
 	
-	//Get zipcode
+	//Return the Zipcode
 	public String getZipcode() {
 		return this.zipcode;
 	}
 	
-	//Set zipcode
+	//Set the Zipcode
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}

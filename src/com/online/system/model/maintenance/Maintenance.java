@@ -2,7 +2,7 @@ package com.online.system.model.maintenance;
 
 import java.util.Date;
 
-// Schedule of future maintenance requests
+/* This class is used to hold information of scheduled maintenance for a facility */
 public class Maintenance implements IMaintenance {
     
 	private String scheduleID;
@@ -20,47 +20,47 @@ public class Maintenance implements IMaintenance {
     	this.completed = false;
     }*/
     
-    //Get schedule ID
+    //Return the scheduled maintenance ID number
     public String getScheduleID() {
     	return this.scheduleID;
     }
     
-    //Set schedule ID
+    //Set the scheduled maintenance ID number
     public void setScheduleID(String id) {
     	this.scheduleID = id;
     }
     
-    //Get cost
+    //Return the cost of the maintenance job
     public IMaintCost getMaintCost() {
     	return this.cost;
     }
     
-    //Set cost
+    //Set the cost of the maintenance job
     public void setMaintCost(IMaintCost cost) {
     	this.cost = cost;
     }
     
-    //Get schedule date
+    //Return the date the maintenance is scheduled for
 	public Date getScheduleDate() {
 		return this.scheduleDate;
 	}
 	
-	//Set schedule date
+	//Set the date the maintenance is scheduled for
 	public void setScheduleDate(Date date) {
 		this.scheduleDate = date;
 	}
 	
-	//Reschedule maintenance
+	//Reschedule the maintenance job
 	public void rescheduleMaint(Date date) {
 		this.scheduleDate = date;
 	}
 	
-	//Get completion status
+	//Return the completion status of the maintenance job
 	public boolean isCompleted() {
 		return this.completed;
 	}
 	
-	//Update completion status
+	//Update the completion status of the maintenance job
 	public void updateCompletionStatus(boolean b) {
 		this.completed = b;
 	}

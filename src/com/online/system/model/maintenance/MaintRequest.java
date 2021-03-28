@@ -2,12 +2,13 @@ package com.online.system.model.maintenance;
 
 import java.util.Date;
 
+/* This class is used to hold information for a maintenance request submitted to the facility */
 public class MaintRequest implements IMaintRequest {
      	
 	private String requestID;
 	private Date dateRequested;
 	private String requestDescription;
-	private boolean requestStatus; //true = open, false = closed (thrown out, or order was made)
+	private boolean requestStatus; //true = open, false = closed (thrown out, or maintenance was scheduled)
 	
 	public MaintRequest() {}
 	
@@ -19,42 +20,42 @@ public class MaintRequest implements IMaintRequest {
 		this.requestStatus = status;
 	}*/
 	
-	//Get request ID
+	//Return request ID number
 	public String getRequestID() {
 		return this.requestID;
 	}
 	
-	//Set request ID
+	//Set request ID number
 	public void setRequestID(String requestID) {
 		this.requestID = requestID;
 	}
 	
-	//Get date requested
+	//Return the submission date of the request
 	public Date getDateRequested() {
 		return this.dateRequested;
 	}
 	
-	//Set date required
+	//Set the submission date of the request
 	public void setDateRequested(Date dateRequested) {
 		this.dateRequested = dateRequested;
 	}
 	
-	//Get request description
+	//Return the request description
 	public String getRequestDescription() {
 		return this.requestDescription;
 	}
 	
-	//Set request description
+	//Set the request description
 	public void setRequestDescription(String requestDescription) {
 		this.requestDescription = requestDescription;
 	}
 	
-	//Get request status
+	//Return the request status
 	public boolean getRequestStatus() {
 		return this.requestStatus;
 	}
 	
-	//Set request status
+	//Set the request status
 	public void setRequestStatus(boolean status) {
 		this.requestStatus = status;
 	}

@@ -1,5 +1,7 @@
 package com.online.system.model.facility;
 
+/* This class is used to keep track of the capacity of the facility */
+/* Tracks the total capacity, how many units are in use, and how many units are available */
 public class Capacity implements ICapacity {
 
 	private int totalUnits;
@@ -7,27 +9,27 @@ public class Capacity implements ICapacity {
 	
 	public Capacity() {}
 	
-	//Set total units
+	//Set Total Units
 	public void setNumTotalUnits(int total) {
 		this.totalUnits = total;
 	}
 	
-	//Get total units
+	//Return Total Units
 	public int getNumTotalUnits() {
 		return this.totalUnits;
 	}
 	
-	//Set rented units
+	//Set Number of Rented Units
 	public void setNumRentedUnits(int rented) {
 		this.rentedUnits = rented;
 	}
 	
-	//Get number of units rented
+	//Return Number of Currently Rented Units
 	public int getNumRentedUnits() {
 		return this.rentedUnits;
 	}
 	
-	//Get number of vacant units
+	//Return Number of Currently Vacant Units
 	public int getNumAvailableUnits() {
 		return (this.totalUnits - this.rentedUnits);
 	}

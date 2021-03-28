@@ -1,5 +1,6 @@
 package com.online.system.model.use;
 
+/* This class is used to hold information of someone using the facility */
 public class FacilityUser implements IFacilityUser {
 
 	private String userID;
@@ -8,32 +9,32 @@ public class FacilityUser implements IFacilityUser {
 	
 	public FacilityUser() {}
 	
-	//Get User ID
+	//Get the user ID number
 	public String getUserID() {
 		return this.userID;
 	}
 	
-	//Set User ID
+	//Set the user ID number
 	public void setUserID(String id) {
 		this.userID = id;
 	}
 	
-	//Get First Name
+	//Return the user's first name
 	public String getFirstName() {
 		return this.firstName;
 	}
 	
-	//Set First Name
+	//Set the user's first name
 	public void setFirstName(String first) {
 		this.firstName = first;
 	}
 	
-	//Get Last Name
+	//Return the user's last name
 	public String getLastName() {
 		return this.lastName;
 	}
 	
-	//Set Last Name
+	//Set the user's last name
 	public void setLastName(String last) {
 		this.lastName = last;
 	}

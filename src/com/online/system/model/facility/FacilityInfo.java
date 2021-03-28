@@ -1,5 +1,8 @@
 package com.online.system.model.facility;
 
+import java.util.Date;
+
+/* This class is used to hold all facility information */
 public class FacilityInfo implements IFacilityInfo {
 
 	private String facilityID;
@@ -7,57 +10,68 @@ public class FacilityInfo implements IFacilityInfo {
 	private IAddress address;
 	private IFacilityManager manager;
 	private ICapacity capacity;
-	private int daysOpen;
+	private Date dateOpened;
 	
 	public FacilityInfo() {}
 	
+	//Set the ID number of the facility
 	public void setFacilityID(String id) {
 		this.facilityID = id;
 	}
 
-	
+	//Return the ID number of the facility
 	public String getFacilityID() {
 		return this.facilityID;
 	}
 	
-	
+	//Set the name of the facility
 	public void setFacilityName(String name) {
 		this.name = name;
 	}
 		
-	
+	//Return the name of the facility
 	public String getFacilityName() {
 		return this.name;
 	}
 	
-	
+	//Set the address of the facility
 	public void setFacilityAddress(IAddress ad) {
 		this.address = ad;
 	}
 		
-	
+	//Return the address of the facility
 	public IAddress getFacilityAddress() {
 		return this.address;
 	}
 
-	
+	//Set the manager of the facility
 	public void setFacilityManager(IFacilityManager manager) {
 		this.manager = manager;
 	}
 
-	
+	//Return the manager of the facility
 	public IFacilityManager getFacilityManager() {
 		return this.manager;
 	}
 
-	
+	//Set the capacity of the facility
 	public void setCapacity(ICapacity capacity) {
 		this.capacity = capacity;
 	}
 
-	
+	//Return the capacity of the facility
 	public ICapacity getCapacity() {
 		return this.capacity;
+	}
+	
+	//Set the date the facility opened
+	public void setDateOpened(Date date) {
+		this.dateOpened = date;
+	}
+	
+	//Return the date the facility opened
+	public Date getDateOpened() {
+		return this.dateOpened;
 	}
 	
 	/*
@@ -69,14 +83,5 @@ public class FacilityInfo implements IFacilityInfo {
 		return id + "\n" + name + "\n" + address + "\n" + manager;
 	}
 	*/
-	
-	public void setDaysOpen(int days) {
-		this.daysOpen = days;
-	}
-	
-	public int getDaysOpen() {
-		return this.daysOpen;
-	}
-	
 	
 }

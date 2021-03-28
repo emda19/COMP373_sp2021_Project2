@@ -2,6 +2,7 @@ package com.online.system.model.use;
 
 import java.util.Date;
 
+/* This class marks a start and end date for facility usages */
 public class UseInterval implements IUseInterval {
 
 	private Date startDate;
@@ -9,22 +10,22 @@ public class UseInterval implements IUseInterval {
 	
 	public UseInterval() {}
 	
-	//Get start date
+	//Return the start date
 	public Date getStartDate() {
 		return this.startDate;
 	}
 	
-	//Change start date
+	//Set the start date
 	public void setStartDate(Date d) {
 		this.startDate = d;
 	}
 	
-	//Get end date
+	//Return the end date
 	public Date getEndDate() {
 		return this.endDate;
 	}
 	
-	//Change end date
+	//Set the end date
 	public void setEndDate(Date d) {
 		this.endDate = d;
 	}

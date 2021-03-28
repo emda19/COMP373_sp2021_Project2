@@ -1,5 +1,7 @@
 package com.online.system.model.facility;
 
+import java.util.Date;
+
 public interface IFacilityInfo {
 
 	public void setFacilityID(String id);
@@ -12,6 +14,6 @@ public interface IFacilityInfo {
 	public IFacilityManager getFacilityManager();
 	public void setCapacity(ICapacity capacity);
 	public ICapacity getCapacity();
-	public void setDaysOpen(int days);
-	public int getDaysOpen();
+	public void setDateOpened(Date date);
+	public Date getDateOpened();
 }

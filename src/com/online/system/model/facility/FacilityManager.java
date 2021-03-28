@@ -1,5 +1,6 @@
 package com.online.system.model.facility;
 
+/* This class is used to hold information for the manager of a facility */
 public class FacilityManager implements IFacilityManager {
 
 	private String managerID;
@@ -17,42 +18,42 @@ public class FacilityManager implements IFacilityManager {
 		this.phoneNumber = pn;
 	}*/
 	
-	//Get Manager ID
+	//Return the manager's ID number
 	public String getManagerID() {
 		return this.managerID;
 	}
 	
-	//Set Manager ID
+	//Set the manager's ID number
 	public void setManagerID(String id) {
 		this.managerID = id;
 	}
 	
-	//Get first name
+	//Return the manager's first name
 	public String getFirstName() {
 		return this.firstName;
 	}
 	
-	//Set first name
+	//Set the manager's first name
 	public void setFirstName(String first) {
 		this.firstName = first;
 	}
 	
-	//Get last name
+	//Return the manager's last name
 	public String getLastName() {
 		return this.lastName;
 	}
 	
-	//Set last name
+	//Set the manager's last name
 	public void setLastName(String last) {
 		this.lastName = last;
 	}
 	
-	//Get phone number
+	//Return the manager's phone number
 	public IPhone getPhoneNumber() {
 		return this.phoneNumber;
 	}
 	
-	//Set phone number
+	//Set the manager's phone number
 	public void setPhoneNumber(IPhone number) {
 		this.phoneNumber = number;
 	}

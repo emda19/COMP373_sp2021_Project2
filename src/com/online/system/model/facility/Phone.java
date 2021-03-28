@@ -1,5 +1,6 @@
 package com.online.system.model.facility;
 
+/* This class is used to format a phone number for a facility's manager */
 public class Phone implements IPhone {
 
 	private String areaCode;
@@ -7,12 +8,12 @@ public class Phone implements IPhone {
 	
 	public Phone() {}
 	
-	//Get area code
+	//Return the area code
 	public String getAreaCode() {
 		return this.areaCode;
 	}
 	
-	//Set area code
+	//Set the area code
 	public void setAreaCode(String code) {
 		//Validate area code, must be 3 characters long
 		if (code.length() == 3) {
@@ -22,12 +23,12 @@ public class Phone implements IPhone {
 		}
 	}
 	
-	//Get phone number
+	//Return the phone number
 	public String getPhoneNumber() {
 		return this.phoneNumber;
 	}
 	
-	//Set phone number
+	//Set the phone number
 	public void setPhoneNumber(String number) {
 		//Validate phone number, must be 7 characters long
 		if (number.length() == 7) {
