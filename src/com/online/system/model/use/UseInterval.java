@@ -2,15 +2,12 @@ package com.online.system.model.use;
 
 import java.util.Date;
 
-public class UseInterval {
+public class UseInterval implements IUseInterval {
 
 	private Date startDate;
 	private Date endDate;
 	
-	public UseInterval(Date start, Date end) {
-		this.startDate = start;
-		this.endDate = end;
-	}
+	public UseInterval() {}
 	
 	//Get start date
 	public Date getStartDate() {
@@ -18,7 +15,7 @@ public class UseInterval {
 	}
 	
 	//Change start date
-	public void changeStartDate(Date d) {
+	public void setStartDate(Date d) {
 		this.startDate = d;
 	}
 	
@@ -28,7 +25,7 @@ public class UseInterval {
 	}
 	
 	//Change end date
-	public void changeEndDate(Date d) {
+	public void setEndDate(Date d) {
 		this.endDate = d;
 	}
 	

@@ -2,14 +2,12 @@ package com.online.system.model.use;
 
 import java.util.ArrayList;
 
-public class UseLog implements IUse {
+public class UseLog implements IUseLog {
 	
 	private String useLogID;
-	private ArrayList<Usage> useLog;
+	private ArrayList<IUsage> useLog;
 	
-	public UseLog() {
-		this.useLog = new ArrayList<Usage>();
-	}
+	public UseLog() {}
 
 	public void setUseLogID(String id) {
 		this.useLogID = id;
@@ -19,14 +17,14 @@ public class UseLog implements IUse {
 		return this.useLogID;
 	}
 
-	public void setUseLog(ArrayList<Usage> map) {
-		this.useLog = map;
+	public void setUseLog(ArrayList<IUsage> log) {
+		this.useLog = log;
 	}
 
 	@Override
-	public boolean isInUseDuringInterval(UseInterval interval) {
-		ArrayList<UseInterval> usageDates = new ArrayList<UseInterval>();
-		for (Usage u : this.useLog) {
+	public boolean isInUseDuringInterval(IUseInterval interval) {
+		ArrayList<IUseInterval> usageDates = new ArrayList<IUseInterval>();
+		for (IUsage u : this.useLog) {
 			usageDates.add(u.getUseInterval());
 		}
 		if (usageDates.contains(interval)) {
@@ -37,20 +35,22 @@ public class UseLog implements IUse {
 	}
 
 	@Override
-	public Usage assignFacilityToUse(FacilityUser user, UseInterval interval) {
-		Usage use = new Usage(user, interval);
+	public IUsage assignFacilityToUse(IFacilityUser user, IUseInterval interval) {
+		IUsage use = new Usage();
+		use.setUser(user);
+		use.setUseInterval(interval);
 		this.useLog.add(use);
 		return use;
 	}
 
 	@Override
-	public ArrayList<Usage> vacateFacility() {
+	public ArrayList<IUsage> vacateFacility() {
 		this.useLog.clear();
 		return this.useLog;
 	}
 
 	@Override
-	public ArrayList<Usage> listActualUsage() {
+	public ArrayList<IUsage> listActualUsage() {
 		return this.useLog;
 	}
 
@@ -58,7 +58,7 @@ public class UseLog implements IUse {
 	public int calcUsageRate() {
 		int usages = this.useLog.size();
 		int days = 0;
-		for (Usage u : this.useLog) {
+		for (IUsage u : this.useLog) {
 			days += u.getDaysUsed();
 		}
 		int rate = usages / days;

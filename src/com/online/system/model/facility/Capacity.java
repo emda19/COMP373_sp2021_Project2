@@ -1,11 +1,11 @@
 package com.online.system.model.facility;
 
-public class FacilityCapacity {
+public class Capacity implements ICapacity {
 
 	private int totalUnits;
 	private int rentedUnits;
 	
-	public FacilityCapacity() {}
+	public Capacity() {}
 	
 	//Set total units
 	public void setNumTotalUnits(int total) {
@@ -22,10 +22,12 @@ public class FacilityCapacity {
 		this.rentedUnits = rented;
 	}
 	
+	//Get number of units rented
 	public int getNumRentedUnits() {
 		return this.rentedUnits;
 	}
 	
+	//Get number of vacant units
 	public int getNumAvailableUnits() {
 		return (this.totalUnits - this.rentedUnits);
 	}

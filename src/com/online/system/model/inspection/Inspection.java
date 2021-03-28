@@ -1,16 +1,14 @@
 package com.online.system.model.inspection;
 import java.util.Date;
 
-public class Inspection {
+public class Inspection implements I_Inspection {
     
 	private String inspectionID;
     private Date inspectionDate;
     private String inspectionDescription;
     private String outcome;
 	
-    public Inspection() {
-    	setInspectionDate(new Date());
-    }
+    public Inspection() {}
     
     //Set inspection id
 	public void setInspectionID(String id) {

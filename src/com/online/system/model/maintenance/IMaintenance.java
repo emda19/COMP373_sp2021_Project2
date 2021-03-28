@@ -1,17 +1,16 @@
 package com.online.system.model.maintenance;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public interface IMaintenance {
 
-	public MaintRequest makeFacilityMaintRequest(String id, Date d, String des, boolean status);
-	public Maintenance scheduleMaintenance(String id, MaintCost cost, Date date);
-	public ArrayList<MaintRequest> listMaintRequests();
-	public ArrayList<Maintenance> listMaintenance();
-	public ArrayList<String> listFacilityProblems();
-	public float calcMaintenanceCostForFacility();
-	public int calcProblemRateForFacility();
-	public int calcDownTimeForFacility();
-	
+	public String getScheduleID();
+	public void setScheduleID(String id);
+	public IMaintCost getMaintCost();
+	public void setMaintCost(IMaintCost cost);
+	public Date getScheduleDate();
+	public void setScheduleDate(Date date);
+	public void rescheduleMaint(Date date);
+	public boolean isCompleted();
+	public void updateCompletionStatus(boolean b);
 }

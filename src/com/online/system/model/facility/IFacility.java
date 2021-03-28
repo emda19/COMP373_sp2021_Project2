@@ -5,11 +5,12 @@ import java.util.Date;
 
 public interface IFacility {
 
-	public ArrayList<Facility> listFacilities();
-	public FacilityInfo getFacilityInformation();
+	public void setFacilityInfo(IFacilityInfo info);
+	public ArrayList<IFacility> listFacilities();
+	public IFacilityInfo getFacilityInformation();
 	public int requestAvailableCapacity();
-	public Facility addNewFacility(Facility f);
-	public FacilityInfo addFacilityDetail(String id, String name, Address address, FacilityManager manager, FacilityCapacity capacity, Date date);
-	public Facility removeFacility(Facility f);
+	public IFacility addNewFacility(IFacility f);
+	public IFacility removeFacility(IFacility f);
+	public IFacilityInfo addFacilityDetail(String id, String name, IAddress address, IFacilityManager manager, ICapacity capacity, Date date);
 	
 }

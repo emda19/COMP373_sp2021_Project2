@@ -1,29 +1,26 @@
 package com.online.system.model.use;
 
-public class Usage {
+public class Usage implements IUsage {
 
-	private FacilityUser user;
-	private UseInterval useInterval;
+	private IFacilityUser user;
+	private IUseInterval useInterval;
 	private int daysUsed;
 	
-	public Usage(FacilityUser u, UseInterval i) {
-		this.user = u;
-		this.useInterval = i;
-	}
+	public Usage() {}
 	
-	public void setUser(FacilityUser user) {
+	public void setUser(IFacilityUser user) {
 		this.user = user;
 	}
 	
-	public FacilityUser getUser() {
+	public IFacilityUser getUser() {
 		return this.user;
 	}
 	
-	public void setUseInterval(UseInterval i) {
+	public void setUseInterval(IUseInterval i) {
 		this.useInterval = i;
 	}
 	
-	public UseInterval getUseInterval() {
+	public IUseInterval getUseInterval() {
 		return this.useInterval;
 	}
 	

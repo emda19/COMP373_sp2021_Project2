@@ -10,22 +10,18 @@ import com.online.system.model.maintenance.*;
 import com.online.system.model.use.*;
 
 public class FacilityClient {
-
+// All objects created are interface objects, not classes
 	
 	public static void main(String[] args) {
 		
-		/* File could be read in
-		File file = new File("FacilityManagementSystem.txt");
-		DataManager data = new DataManager();
-		data.readFile(file);
-		*/
+		
 		
 		// Create a facility
 		Facility LakeSideApartments = new Facility();
 		Address address = new Address("8240 Granville", "Apt. 760", "Chicago", "Illinois", "60660");
 		Phone phone = new Phone("123","4567890");
 		FacilityManager manager = new FacilityManager("75Hd", "Greg", "Smith", phone);
-		FacilityCapacity capacity = new FacilityCapacity();
+		Capacity capacity = new Capacity();
 		capacity.setNumTotalUnits(800);
 		capacity.setNumRentedUnits(589);
 		LakeSideApartments.addFacilityDetail("5h8sD", "LakeSide", address, manager, capacity, new Date());

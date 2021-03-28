@@ -2,19 +2,22 @@ package com.online.system.model.maintenance;
 
 import java.util.Date;
 
-public class MaintRequest {
+public class MaintRequest implements IMaintRequest {
      	
 	private String requestID;
 	private Date dateRequested;
 	private String requestDescription;
 	private boolean requestStatus; //true = open, false = closed (thrown out, or order was made)
-	   
+	
+	public MaintRequest() {}
+	
+	/* non-default constructor
 	public MaintRequest(String id, Date d, String desc, boolean status) {
 		this.requestID = id;
 		this.dateRequested = d;
 		this.requestDescription = desc;
 		this.requestStatus = status;
-	}
+	}*/
 	
 	//Get request ID
 	public String getRequestID() {

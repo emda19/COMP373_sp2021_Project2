@@ -1,32 +1,40 @@
 package com.online.system.model.facility;
 
-public class Phone {
+public class Phone implements IPhone {
 
 	private String areaCode;
 	private String phoneNumber;
 	
-	public Phone(String ac, String pn) {
-		//Validate area code
-		if (ac.length() == 3) {
-			this.areaCode = ac;
-		} else {
-			System.out.println("Error: Invalid area code");
-			return;
-		}
-		//Validate phone number
-		if (pn.length() == 7) {
-			this.phoneNumber = pn;
-		} else {
-			System.out.println("Error: Invalid phone number");
-			return;
-		}
-	}
+	public Phone() {}
 	
+	//Get area code
 	public String getAreaCode() {
 		return this.areaCode;
 	}
+	
+	//Set area code
+	public void setAreaCode(String code) {
+		//Validate area code, must be 3 characters long
+		if (code.length() == 3) {
+			this.areaCode = code;
+		} else {
+			System.out.println("Error: Invalid area code");
+		}
+	}
+	
+	//Get phone number
 	public String getPhoneNumber() {
 		return this.phoneNumber;
+	}
+	
+	//Set phone number
+	public void setPhoneNumber(String number) {
+		//Validate phone number, must be 7 characters long
+		if (number.length() == 7) {
+			this.phoneNumber = number;
+		} else {
+			System.out.println("Error: Invalid phone number");
+		}
 	}
 	
 	/*

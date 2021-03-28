@@ -1,30 +1,41 @@
 package com.online.system.model.use;
 
-public class FacilityUser {
+public class FacilityUser implements IFacilityUser {
 
 	private String userID;
 	private String firstName;
 	private String lastName;
 	
-	public FacilityUser(String id, String first, String last) {
-		this.userID = id;
-		this.firstName = first;
-		this.lastName = last;
-	}
+	public FacilityUser() {}
 	
-	//Get Renter ID
-	public String getRenterID() {
+	//Get User ID
+	public String getUserID() {
 		return this.userID;
 	}
 	
-	//Get first name
+	//Set User ID
+	public void setUserID(String id) {
+		this.userID = id;
+	}
+	
+	//Get First Name
 	public String getFirstName() {
 		return this.firstName;
 	}
 	
-	//Get last name
+	//Set First Name
+	public void setFirstName(String first) {
+		this.firstName = first;
+	}
+	
+	//Get Last Name
 	public String getLastName() {
 		return this.lastName;
+	}
+	
+	//Set Last Name
+	public void setLastName(String last) {
+		this.lastName = last;
 	}
 	
 }

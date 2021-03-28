@@ -1,19 +1,15 @@
 package com.online.system.model.facility;
 
-public class FacilityInfo {
+public class FacilityInfo implements IFacilityInfo {
 
 	private String facilityID;
 	private String name;
-	private Address address;
-	private FacilityManager manager;
-	private FacilityCapacity capacity;
+	private IAddress address;
+	private IFacilityManager manager;
+	private ICapacity capacity;
 	private int daysOpen;
 	
-	public FacilityInfo() {
-		setFacilityManager(new FacilityManager());
-		setFacilityCapacity(new FacilityCapacity());
-	}
-	
+	public FacilityInfo() {}
 	
 	public void setFacilityID(String id) {
 		this.facilityID = id;
@@ -35,32 +31,32 @@ public class FacilityInfo {
 	}
 	
 	
-	public void setFacilityAddress(Address ad) {
+	public void setFacilityAddress(IAddress ad) {
 		this.address = ad;
 	}
 		
 	
-	public Address getFacilityAddress() {
+	public IAddress getFacilityAddress() {
 		return this.address;
 	}
 
 	
-	public void setFacilityManager(FacilityManager manager) {
+	public void setFacilityManager(IFacilityManager manager) {
 		this.manager = manager;
 	}
 
 	
-	public FacilityManager getFacilityManager() {
+	public IFacilityManager getFacilityManager() {
 		return this.manager;
 	}
 
 	
-	public void setFacilityCapacity(FacilityCapacity capacity) {
+	public void setCapacity(ICapacity capacity) {
 		this.capacity = capacity;
 	}
 
 	
-	public FacilityCapacity getFacilityCapacity() {
+	public ICapacity getCapacity() {
 		return this.capacity;
 	}
 	
