@@ -57,5 +57,7 @@ public class MaintRequest implements IMaintRequest {
 	public void setRequestStatus(boolean status) {
 		this.requestStatus = status;
 	}
+	
+	
 
 }

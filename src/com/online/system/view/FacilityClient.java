@@ -84,6 +84,32 @@ public class FacilityClient {
 		
 		
 		/* --Create a Maintenance Log-- */
+		IMaintLog maintLog1 = (IMaintLog) appContext.getBean("maintLog");
+		maintLog1.setDaysRunning("08/11/2011", "05/02/2017");
 		
+		/* --Create a Maintenance Request-- */
+		IMaintRequest request1 = (IMaintRequest) appContext.getBean("request");
+		request1.setRequestID("0325X");
+		request1.setDateRequested("04/07/2012");
+		request1.setRequestDescription("Exterminator needed for rat problems");
+		request1.setRequestStatus(true);
+		//Add the request to the log
+		maintLog1.makeFacilityMaintRequest(request1);
+		
+		/* --Create a Scheduled Maintenance Job-- */
+		IMaintenance maintenance1 = (IMaintenance) appContext.getBean("maintenance");
+		//MaintCost for Job
+		IMaintCost cost1 = maintenance1.getMaintCost();
+		cost1.setLaborCost(150.65);
+		cost1.setMaterialCost(75.32);
+		
+		maintenance1.setScheduleID("YDB930");
+		//maintenance1.setMaintCost(cost1);
+		maintenance1.setScheduleDate("04/10/2012");
+		//Add the maintenance job to the log
+		maintLog1.scheduleMaintenance(maintenance1);
+		
+		
+		/* ---- */
 	}
 }

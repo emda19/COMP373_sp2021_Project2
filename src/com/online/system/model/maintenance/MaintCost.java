@@ -2,51 +2,36 @@ package com.online.system.model.maintenance;
 
 /* This class is used to hold information for the cost of maintenance */
 public class MaintCost {
-    private String costID;
-	private float laborCost;
-	private float equipmentCost;
-	private float totalCost;
+	private double laborCost;
+	private double materialCost;
+	private double totalCost;
 	
 	public MaintCost() {}
 	
-	//Return the cost ID number
-	public String getCostID() {
-		return costID;
-	}
-	
-	//Set the cost ID number
-	public void setCostID(String id) {
-		this.costID = id;
-	}
-	
 	//Return the cost of labor
-	public float getLaborCost() {
+	public double getLaborCost() {
 		return laborCost;
 	}
 	
 	//Set the cost of labor
-	public void setLaborCost(float lc) {
+	public void setLaborCost(double lc) {
 		this.laborCost = lc;
 	}
 	
 	//Return the cost of materials
-	public float getMaterialCost() {
-		return equipmentCost;
+	public double getMaterialCost() {
+		return materialCost;
 	}
 	
 	//Set the cost of materials
-	public void setMaterialCost(float ec) {
-		this.equipmentCost = ec;
+	public void setMaterialCost(double mc) {
+		this.materialCost = mc;
 	}
 	
-	//Return the total cost of the maintenance
-	public float getTotalCost() {
-		return totalCost;
-	}
-	
-	//Set the total cost of the maintenance
-	public void setTotalCost(float tc) {
-		this.totalCost = tc;
+	//Calculate and return the total cost of the maintenance
+	public double findTotalCost() {
+		this.totalCost = this.laborCost + this.materialCost;
+		return this.totalCost;
 	}
 
 }

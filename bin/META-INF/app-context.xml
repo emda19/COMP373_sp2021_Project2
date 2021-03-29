@@ -56,5 +56,34 @@
 			 -->
 		</property>
 	</bean>
+	
+	
+	<bean id="maintLog" class="com.online.system.model.maintenance.MaintLog" scope="prototype">
+		<property name="requests">
+			<list/>
+			<!-- 
+			<list>
+				<ref bean="request"/>
+			</list
+			 -->
+		</property>
+		<property name="maintSchedule">
+			<list/>
+			<!-- 
+			<list>
+				<ref bean="maintenance"/>
+			</list>
+			 -->
+		</property>
+	</bean>
+	
+	<bean id="maintenance" class="com.online.system.model.maintenance.Maintenance" scope="prototype">
+		<property name="cost" ref="cost"/>
+	</bean>
+	
+	<bean id="request" class="com.online.system.model.maintenance.MaintRequest" scope="prototype">
+	</bean>
+	
+	<bean id="cost" class="com.online.system.model.maintenance.MaintCost" scope="prototype"/>
 
 </beans>

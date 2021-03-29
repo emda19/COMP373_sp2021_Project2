@@ -1,23 +1,19 @@
 package com.online.system.model.maintenance;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface IMaintLog {
 	
 	public void setDaysRunning(String start, String today);
-	public void setMaintLogID(String id);
-	public String getMaintLogID();
-	public void setRequestLog(ArrayList<IMaintRequest> list);
-	public ArrayList<IMaintRequest> getRequestLog();
-	public void setMaintSchedule(ArrayList<IMaintenance> list);
-	public ArrayList<IMaintenance> getMaintSchedule();
+	public void setRequestLog(List<IMaintRequest> list);
+	public void setMaintSchedule(List<IMaintenance> list);
 	
-	public IMaintRequest makeFacilityMaintRequest(String id, String date, String des, boolean status);
-	public IMaintenance scheduleMaintenance(String id, IMaintCost cost, String date);
-	public ArrayList<IMaintRequest> listMaintRequests();
-	public ArrayList<IMaintenance> listMaintenance();
-	public ArrayList<String> listFacilityProblems();
-	public float calcMaintenanceCostForFacility();
+	public IMaintRequest makeFacilityMaintRequest(IMaintRequest request);
+	public IMaintenance scheduleMaintenance(IMaintenance maint);
+	public List<IMaintRequest> listMaintRequests();
+	public List<IMaintenance> listMaintenance();
+	public List<String> listFacilityProblems();
+	public double calcMaintenanceCostForFacility();
 	public float calcProblemRateForFacility();
 	public float calcDownTimeForFacility();
 	
