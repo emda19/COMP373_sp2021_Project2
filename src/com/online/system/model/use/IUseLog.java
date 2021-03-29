@@ -1,16 +1,14 @@
 package com.online.system.model.use;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface IUseLog {
 
-	public void setUseLogID(String id);
-	public String getUseLogID();
-	public void setUseLog(ArrayList<IUsage> log);
+	public void setUseLog(List<IUsage> log);
 	
 	public boolean isInUseDuringInterval(IUseInterval interval);
-	public IUsage assignFacilityToUse(IFacilityUser user, IUseInterval interval);
-	public ArrayList<IUsage> vacateFacility();
-	public ArrayList<IUsage> listActualUsage();
-	public int calcUsageRate();
+	public IUsage assignFacilityToUse(IUsage use);
+	public List<IUsage> vacateFacility();
+	public List<IUsage> listActualUsage();
+	public float calcUsageRate();
 }

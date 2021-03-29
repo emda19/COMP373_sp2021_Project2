@@ -110,6 +110,57 @@ public class FacilityClient {
 		maintLog1.scheduleMaintenance(maintenance1);
 		
 		
-		/* ---- */
+		/* --Create Use Log-- */
+		IUseLog useLog1 = (IUseLog) appContext.getBean("useLog");
+		
+		/* --Create First Usage-- */
+		IUsage usage1 = (IUsage) appContext.getBean("usage");
+		//User for Usage1
+		IFacilityUser user1 = usage1.getUser();
+		user1.setUserID("JKS742");
+		user1.setFirstName("");
+		user1.setLastName("");
+		//Use Interval for Usage1
+		IUseInterval interval1 = usage1.getUseInterval();
+		interval1.setStartDate("02/01/2012");
+		interval1.setEndDate("02/01/2013");
+		
+		//usage1.setUser(user1);
+		//usage1.setUseInterval(interval1);
+		usage1.setDaysUsed(365);
+		//Add usage1 to the log
+		useLog1.assignFacilityToUse(usage1);
+		
+		/* --Create Second Usage-- */
+		IUsage usage2 = (IUsage) appContext.getBean("usage");
+		//User for Usage2
+		IFacilityUser user2 = usage2.getUser();
+		user2.setUserID("LDB934");
+		user2.setFirstName("");
+		user2.setLastName("");
+		//Use Interval for Usage2
+		IUseInterval interval2 = usage2.getUseInterval();
+		interval2.setStartDate("05/30/2012");
+		interval2.setEndDate("05/30/2013");
+		
+		//usage2.setUser(user2);
+		//usage2.setUseInterval(interval2);
+		usage2.setDaysUsed(365);
+		//Add usage2 to the log
+		useLog1.assignFacilityToUse(usage2);
+		
+		
+		/* --Print out Facility Summary-- */
+		
+		
+		/* --Print out Inspection Summary-- */
+		
+		
+		/* --Print out Maintenance Summary-- */
+		
+		
+		/* --Print out Usage Summary-- */
+		
+		
 	}
 }

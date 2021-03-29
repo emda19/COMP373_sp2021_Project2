@@ -85,5 +85,25 @@
 	</bean>
 	
 	<bean id="cost" class="com.online.system.model.maintenance.MaintCost" scope="prototype"/>
+	
+	
+	<bean id="useLog" class="com.online.system.model.use.UseLog" scope="prototype">
+		<property name="usages">
+			<list/>
+			<!-- 
+			<list>
+				<ref bean="usage"/>
+			</list>
+			 -->
+		</property>
+	</bean>
+	
+	<bean id="usage" class="com.online.system.model.use.Usage" scope="prototype">
+		<property name="user" ref="user"/>
+		<property name="interval" ref="interval"/>
+	</bean>
+	
+	<bean id="user" class="com.online.system.model.use.Usage"/>
+	<bean id="interval" class="com.online.system.model.use.UseInterval"/>
 
 </beans>
