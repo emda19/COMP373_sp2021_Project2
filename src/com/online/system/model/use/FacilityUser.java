@@ -6,8 +6,18 @@ public class FacilityUser implements IFacilityUser {
 	private String userID;
 	private String firstName;
 	private String lastName;
+	private String unitNumber;
 	
 	public FacilityUser() {}
+	
+	//Get the unit number being rented
+	public String getUnitNum() {
+		return this.unitNumber;
+	}
+	//Set the unit number being rented
+	public void setUnitNum(String unit) {
+		this.unitNumber = unit;
+	}
 	
 	//Get the user ID number
 	public String getUserID() {

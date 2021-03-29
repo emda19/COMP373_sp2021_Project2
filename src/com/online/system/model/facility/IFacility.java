@@ -1,7 +1,17 @@
 package com.online.system.model.facility;
 
+import com.online.system.model.inspection.I_InspectionLog;
+import com.online.system.model.maintenance.IMaintLog;
+import com.online.system.model.use.IUseLog;
+
 public interface IFacility {
 
+	public void setInspectionLog(I_InspectionLog log);
+	public I_InspectionLog getInspectionLog();
+	public void setMaintLog(IMaintLog log);
+	public IMaintLog getMaintLog();
+	public void setUseLog(IUseLog log);
+	public IUseLog getUseLog();
 	public void setFacilityInformation(IFacilityInfo info);
 	public IFacilityInfo getFacilityInformation();
 	public int requestAvailableCapacity();

@@ -1,5 +1,7 @@
 package com.online.system.view;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -64,7 +66,8 @@ public class FacilityClient {
 		
 		/* --Create an Inspection Log-- */
 		I_InspectionLog inspectionLog1 = (I_InspectionLog) appContext.getBean("inspectionLog");
-		
+		//Associate log with facility1
+		facility1.setInspectionLog(inspectionLog1);
 		/* --Create an Inspection-- */
 		I_Inspection inspection1 = (I_Inspection) appContext.getBean("inspection");
 		inspection1.setInspectionID("938FN");
@@ -85,6 +88,8 @@ public class FacilityClient {
 		
 		/* --Create a Maintenance Log-- */
 		IMaintLog maintLog1 = (IMaintLog) appContext.getBean("maintLog");
+		//Associate maintenance log with facility1
+		facility1.setMaintLog(maintLog1);
 		maintLog1.setDaysRunning("08/11/2011", "05/02/2017");
 		
 		/* --Create a Maintenance Request-- */
@@ -112,7 +117,8 @@ public class FacilityClient {
 		
 		/* --Create Use Log-- */
 		IUseLog useLog1 = (IUseLog) appContext.getBean("useLog");
-		
+		//Associate use log with facility1
+		facility1.setUseLog(useLog1);
 		/* --Create First Usage-- */
 		IUsage usage1 = (IUsage) appContext.getBean("usage");
 		//User for Usage1
@@ -149,18 +155,103 @@ public class FacilityClient {
 		//Add usage2 to the log
 		useLog1.assignFacilityToUse(usage2);
 		
+		/* --Add a Second Facility-- */
+		IFacility facility2 = (IFacility) appContext.getBean("facility");
+		buildings.addNewFacility(facility2);
+		//Address
+		IAddress address2 = (IAddress) appContext.getBean("address");
+		address2.setStreet("0398 W. Hollywood St.");
+		address2.setCity("San Diego");
+		address2.setState("CA");
+		address2.setZipcode("92102");
+		//Manager
+		IFacilityManager manager2 = (IFacilityManager) appContext.getBean("manager");
+		manager2.setManagerID("KM029");
+		manager2.setFirstName("Kate");
+		manager2.setLastName("Harbour");
+		//Phone For Manager
+		IPhone phone2 = manager2.getPhoneNumber();
+		phone2.setAreaCode("619");
+		phone2.setPhoneNumber("3302648");
+		manager2.setPhoneNumber(phone2);
+		//Capacity
+		ICapacity capacity2 = (ICapacity) appContext.getBean("capacity");
+		capacity2.setNumTotalUnits(100);
+		capacity2.setNumRentedUnits(30);
+		//Manually fill out details
+		facility2.addFacilityDetail("933OS","Dizzy Apartments",address2,manager2,capacity2,"09/15/2020");
 		
-		/* --Print out Facility Summary-- */
 		
-		
-		/* --Print out Inspection Summary-- */
-		
-		
-		/* --Print out Maintenance Summary-- */
-		
-		
-		/* --Print out Usage Summary-- */
-		
-		
+		/* --Print out Buildings' Facilities Summary-- */
+		System.out.println("Company: "+buildings.getCompanyName());
+		System.out.println("\n\t\t\t\t**--Facilities--**");
+		List<IFacility> listFacilities = buildings.listFacilities();
+		for (IFacility facility : listFacilities) {
+			System.out.println("\nName: "+facility.getFacilityInformation().getFacilityName());
+			System.out.println("Facility ID: "+facility.getFacilityInformation().getFacilityID());
+			System.out.println("Date opened: "+facility.getFacilityInformation().getDateOpened());
+			System.out.println("Manager: "+facility.getFacilityInformation().getFacilityManager().getFirstName()
+					+""+facility.getFacilityInformation().getFacilityManager().getLastName());
+			System.out.println("\t\tManager ID: "+facility.getFacilityInformation().getFacilityManager().getManagerID());
+			System.out.println("\t\tPhone: "+facility.getFacilityInformation().getFacilityManager().getPhoneNumber());
+			System.out.println("Address:");
+			System.out.println("\t\t"+facility.getFacilityInformation().getFacilityAddress().getStreet());
+			System.out.println("\t\t"+facility.getFacilityInformation().getFacilityAddress().getCity());
+			System.out.println("\t\t"+facility.getFacilityInformation().getFacilityAddress().getState());
+			System.out.println("\t\t"+facility.getFacilityInformation().getFacilityAddress().getZipcode());
+			System.out.println("Capacity: ");
+			System.out.println("\t\tTotal Units: "+facility.getFacilityInformation().getCapacity().getNumTotalUnits());
+			System.out.println("\t\tRented Units: "+facility.getFacilityInformation().getCapacity().getNumRentedUnits());
+			System.out.println("\t\tAvailable Units: "+facility.requestAvailableCapacity());
+			
+			/* --Print out Inspection Summary for each Facility-- */
+			List<I_Inspection> inspectionsList = facility.getInspectionLog().listInspections();
+			System.out.println("\nInspection Summary: ");
+// SINGLE NESTED FOR LOOP 
+			for (I_Inspection inspection : inspectionsList) {
+				System.out.println("\n\t\tInspection ID: "+inspection.getInspectionID());
+				System.out.println("\t\tDate: "+inspection.getInspectionDate());
+				System.out.println("\t\tDescription: "+inspection.getInspectionDescription());
+				System.out.println("\t\tOutcome: "+inspection.getInspectionOutcome());
+			}
+			
+			/* --Print out Maintenance Summary for each Facility-- */
+			/* --Requests-- */
+			List<IMaintRequest> requestList = facility.getMaintLog().listMaintRequests();
+			System.out.println("\t\t\t\nMaintenance Summary");
+			System.out.println("Problems: ");
+			System.out.println("\nRequests:");
+// SINGLE NESTED FOR LOOP
+			for (IMaintRequest request : requestList) {
+				System.out.println("\n\t\tRequest ID: "+request.getRequestID());
+				System.out.println("\t\tDate: "+request.getDateRequested());
+				System.out.println("\t\tDescription: "+request.getRequestDescription());
+				if (request.getRequestStatus()) { //if true
+					System.out.println("\t\tStatus: Open");
+				} else { //if false
+					System.out.println("\t\tStatus: Closed");
+				}
+			}
+			/* --Scheduled Maintenance-- */
+			List<IMaintenance> maintList = facility.getMaintLog().listMaintenance();
+			System.out.println("\nScheduled Maintenance: ");
+// SINGLE NESTED FOR LOOP
+			for (IMaintenance maint : maintList) {
+				System.out.println("\n\t\tJob ID: "+maint.getScheduleID());
+				System.out.println("\t\tScheduled date: "+maint.getScheduleDate());
+				System.out.println("\t\tCost Summary: ");
+				System.out.println("\t\t\tCost for labor: $"+maint.getMaintCost().getLaborCost());
+				System.out.println("\t\t\tCost for materials: $"+maint.getMaintCost().getMaterialCost());
+				System.out.println("\t\t\tTotal Cost: $"+maint.getMaintCost().findTotalCost());
+				if (maint.isCompleted()) { //if true
+					System.out.println("\t\tStatus: Completed");
+				} else { //if false
+					System.out.println("\t\tStatus: Pending");
+				}
+			}
+			
+			/* --Print out Usage Summary for each Facility-- */
+			
+		}
 	}
 }

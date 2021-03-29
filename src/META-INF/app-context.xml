@@ -25,7 +25,10 @@
 	</bean>
 	
 	<bean id="facility" class="com.online.system.model.facility.Facility" scope="prototype">
-		<property name="facilityInfo"></property>
+		<property name="facilityInfo" ref="facilityInfo"/>
+		<property name="inspectionLog" ref="inspectionLog"/>
+		<property name="maintLog" ref="maintLog"/>
+		<property name="useLog" ref="useLog"/>
 	</bean>
 	
 	<bean id="phone" class="com.online.system.model.facility.Phone" scope="prototype"/>
