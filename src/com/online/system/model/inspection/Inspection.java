@@ -1,11 +1,10 @@
 package com.online.system.model.inspection;
-import java.util.Date;
 
 /* This class is used to hold the information for a facility inspection */
 public class Inspection implements I_Inspection {
     
 	private String inspectionID;
-    private Date inspectionDate;
+    private String inspectionDate;
     private String inspectionDescription;
     private String outcome;
 	
@@ -22,12 +21,12 @@ public class Inspection implements I_Inspection {
 	}
 	
 	//Set the date of the inspection
-	public void setInspectionDate(Date d) {
-		this.inspectionDate = d;
+	public void setInspectionDate(String date) {
+		this.inspectionDate = date;
 	}
 	
 	//Return the date of the inspection
-	public Date getInspectionDate() {
+	public String getInspectionDate() {
 		return this.inspectionDate;
 	}
 	

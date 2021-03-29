@@ -1,33 +1,31 @@
 package com.online.system.model.use;
 
-import java.util.Date;
-
 /* This class marks a start and end date for facility usages */
 public class UseInterval implements IUseInterval {
 
-	private Date startDate;
-	private Date endDate;
+	private String startDate;
+	private String endDate;
 	
 	public UseInterval() {}
 	
 	//Return the start date
-	public Date getStartDate() {
+	public String getStartDate() {
 		return this.startDate;
 	}
 	
 	//Set the start date
-	public void setStartDate(Date d) {
-		this.startDate = d;
+	public void setStartDate(String date) {
+		this.startDate = date;
 	}
 	
 	//Return the end date
-	public Date getEndDate() {
+	public String getEndDate() {
 		return this.endDate;
 	}
 	
 	//Set the end date
-	public void setEndDate(Date d) {
-		this.endDate = d;
+	public void setEndDate(String date) {
+		this.endDate = date;
 	}
 	
 	/*

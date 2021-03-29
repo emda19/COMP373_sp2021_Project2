@@ -1,7 +1,5 @@
 package com.online.system.model.facility;
 
-import java.util.Date;
-
 /* This class is used to hold all facility information */
 public class FacilityInfo implements IFacilityInfo {
 
@@ -10,7 +8,7 @@ public class FacilityInfo implements IFacilityInfo {
 	private IAddress address;
 	private IFacilityManager manager;
 	private ICapacity capacity;
-	private Date dateOpened;
+	private String dateOpened;
 	
 	public FacilityInfo() {}
 	
@@ -65,12 +63,12 @@ public class FacilityInfo implements IFacilityInfo {
 	}
 	
 	//Set the date the facility opened
-	public void setDateOpened(Date date) {
+	public void setDateOpened(String date) {
 		this.dateOpened = date;
 	}
 	
 	//Return the date the facility opened
-	public Date getDateOpened() {
+	public String getDateOpened() {
 		return this.dateOpened;
 	}
 	

@@ -1,7 +1,5 @@
 package com.online.system.model.facility;
 
-import java.util.Date;
-
 /* This class is used to manage the information and capacity associated with each facility */
 public class Facility implements IFacility {
 
@@ -27,7 +25,7 @@ public class Facility implements IFacility {
 
 	//Manually update the set of information associated with a facility
 	public IFacilityInfo addFacilityDetail(String id, String name, IAddress address, IFacilityManager manager,
-			ICapacity capacity, Date date) {
+			ICapacity capacity, String date) {
 		this.info.setFacilityID(id);
 		this.info.setFacilityName(name);
 		this.info.setFacilityAddress(address);

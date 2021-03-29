@@ -1,7 +1,10 @@
 package com.online.system.model.maintenance;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /* This class keeps a record of all maintenance jobs for a facility */
 public class MaintLog implements IMaintLog {
@@ -9,16 +12,21 @@ public class MaintLog implements IMaintLog {
 	private String maintLogID;
 	private ArrayList<IMaintRequest> requestLog; //list of all maintenance requests
 	private ArrayList<IMaintenance> maintSchedule; //list of all scheduled maintenance
-	private int daysRunning;
+	private float daysRunning;
 	
 	public MaintLog() {}
 	
-	
-	public void setDaysRunning(int days) {
-		this.daysRunning = days;
-	}
-	public int getDaysRunning() {
-		return this.daysRunning;
+	//Finds the number of days since maintenance first began
+	public void setDaysRunning(String start, String today) {
+		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		try {
+			Date startDate = format.parse(start);
+			Date todayDate = format.parse(today);
+			long difference = todayDate.getTime() - startDate.getTime();
+			this.daysRunning = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//Set the maintenance log ID number
@@ -52,10 +60,10 @@ public class MaintLog implements IMaintLog {
 	}
 
 	//Submit a maintenance request for the facility, add it to the log
-	public IMaintRequest makeFacilityMaintRequest(String id, Date d, String des, boolean status) {
+	public IMaintRequest makeFacilityMaintRequest(String id, String date, String des, boolean status) {
 		IMaintRequest request = new MaintRequest();
 		request.setRequestID(id);
-		request.setDateRequested(d);
+		request.setDateRequested(date);
 		request.setRequestDescription(des);
 		request.setRequestStatus(status);
 		this.requestLog.add(request);
@@ -63,7 +71,7 @@ public class MaintLog implements IMaintLog {
 	}
 
 	//Schedule a maintenance job, add it to the log
-	public IMaintenance scheduleMaintenance(String id, IMaintCost cost, Date date) {
+	public IMaintenance scheduleMaintenance(String id, IMaintCost cost, String date) {
 		IMaintenance maint = new Maintenance();
 		maint.setScheduleID(id);
 		maint.setMaintCost(cost);
@@ -101,16 +109,16 @@ public class MaintLog implements IMaintLog {
 	}
 
 	//Return the number of days where no maintenance jobs took place
-	public int calcDownTimeForFacility() {
+	public float calcDownTimeForFacility() {
 		int daysOfMaint = this.maintSchedule.size();
-		int daysOff = this.daysRunning - daysOfMaint;
+		float daysOff = this.daysRunning - daysOfMaint;
 		return daysOff;
 	}
 
 	//Return the number of problem rate of the facility
-	public int calcProblemRateForFacility() {
+	public float calcProblemRateForFacility() {
 		int numProblems = this.requestLog.size();
-		int problemRate = numProblems / this.daysRunning;
+		float problemRate = numProblems / this.daysRunning;
 		return problemRate;
 	}
 	

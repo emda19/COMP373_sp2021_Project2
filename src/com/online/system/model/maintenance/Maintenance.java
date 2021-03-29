@@ -1,13 +1,11 @@
 package com.online.system.model.maintenance;
 
-import java.util.Date;
-
 /* This class is used to hold information of scheduled maintenance for a facility */
 public class Maintenance implements IMaintenance {
     
 	private String scheduleID;
     private IMaintCost cost;
-    private Date scheduleDate;
+    private String scheduleDate;
     boolean completed = false;
     
     public Maintenance() {}
@@ -41,17 +39,17 @@ public class Maintenance implements IMaintenance {
     }
     
     //Return the date the maintenance is scheduled for
-	public Date getScheduleDate() {
+	public String getScheduleDate() {
 		return this.scheduleDate;
 	}
 	
 	//Set the date the maintenance is scheduled for
-	public void setScheduleDate(Date date) {
+	public void setScheduleDate(String date) {
 		this.scheduleDate = date;
 	}
 	
 	//Reschedule the maintenance job
-	public void rescheduleMaint(Date date) {
+	public void rescheduleMaint(String date) {
 		this.scheduleDate = date;
 	}
 	

@@ -1,12 +1,10 @@
 package com.online.system.model.maintenance;
 
-import java.util.Date;
-
 /* This class is used to hold information for a maintenance request submitted to the facility */
 public class MaintRequest implements IMaintRequest {
      	
 	private String requestID;
-	private Date dateRequested;
+	private String dateRequested;
 	private String requestDescription;
 	private boolean requestStatus; //true = open, false = closed (thrown out, or maintenance was scheduled)
 	
@@ -31,12 +29,12 @@ public class MaintRequest implements IMaintRequest {
 	}
 	
 	//Return the submission date of the request
-	public Date getDateRequested() {
+	public String getDateRequested() {
 		return this.dateRequested;
 	}
 	
 	//Set the submission date of the request
-	public void setDateRequested(Date dateRequested) {
+	public void setDateRequested(String dateRequested) {
 		this.dateRequested = dateRequested;
 	}
 	
