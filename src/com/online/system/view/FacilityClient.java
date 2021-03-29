@@ -50,7 +50,7 @@ public class FacilityClient {
 		//Capacity
 		ICapacity capacity1 = facilityInfo1.getCapacity();
 		capacity1.setNumTotalUnits(50);
-		capacity1.setNumRentedUnits(15);
+		capacity1.setNumRentedUnits(2);
 		//Info
 		facilityInfo1.setFacilityID("ZX873");
 		facilityInfo1.setFacilityName("Scoop Towers");
@@ -114,10 +114,9 @@ public class FacilityClient {
 		IUseLog useLog1 = (IUseLog) appContext.getBean("useLog");
 		//Associate use log with facility1
 		facility1.setUseLog(useLog1);
+		
 		/* --Create First Usage-- */
 		IUsage usage1 = (IUsage) appContext.getBean("usage");
-		//Add usage1 to the log
-		useLog1.assignFacilityToUse(usage1);
 		//User for Usage1
 		IFacilityUser user1 = usage1.getFacilityUser();
 		user1.setUserID("JKS742");
@@ -129,11 +128,11 @@ public class FacilityClient {
 		interval1.setStartDate("02/01/2012");
 		interval1.setEndDate("02/01/2013");
 		interval1.setDaysUsed(); //calculates days used based on start & end date
-		
+		//Add usage1 to the log
+		useLog1.assignFacilityToUse(usage1);
+				
 		/* --Create Second Usage-- */
 		IUsage usage2 = (IUsage) appContext.getBean("usage");
-		//Add usage2 to log
-		useLog1.assignFacilityToUse(usage2);
 		//User for Usage2
 		IFacilityUser user2 = usage2.getFacilityUser();
 		user2.setUserID("LDB934");
@@ -145,6 +144,8 @@ public class FacilityClient {
 		interval2.setStartDate("05/30/2012");
 		interval2.setEndDate("05/30/2013");
 		interval2.setDaysUsed(); //calculates days in use based on start & end date
+		//Add usage2 to log
+		useLog1.assignFacilityToUse(usage2);
 		
 		/* --Add a Second Facility-- */
 		IFacility facility2 = (IFacility) appContext.getBean("facility");
@@ -170,7 +171,7 @@ public class FacilityClient {
 		//ICapacity capacity2 = (ICapacity) appContext.getBean("capacity");
 		ICapacity capacity2 = facility2.getFacilityInfo().getCapacity();
 		capacity2.setNumTotalUnits(100);
-		capacity2.setNumRentedUnits(30);
+		capacity2.setNumRentedUnits(0);
 		//Manually fill out details
 		facility2.addFacilityDetail("933OS","Dizzy Apartments",address2,manager2,capacity2,"09/15/2020");
 		
@@ -259,8 +260,8 @@ public class FacilityClient {
 			
 			/* --Print out Usage Summary for each Facility-- */
 			System.out.println("\nUsage Summary: ");
-			List<IUsage> useLog = facility.getUseLog().listUsages();
-			for (IUsage use : useLog) {
+			List<IUsage> usagesList = facility.getUseLog().listUsages();
+			for (IUsage use : usagesList) {
 				//User
 				String firstName = use.getFacilityUser().getFirstName();
 				String lastName = use.getFacilityUser().getLastName();
@@ -276,7 +277,11 @@ public class FacilityClient {
 				System.out.println("\t\tStart date: "+startDate);
 				System.out.println("\t\tEnd date: "+endDate);
 				System.out.println("\t\tDays in use interval: "+daysInUse);
-				//Usage Rate
+			}
+			//Usage Rate
+			if (usagesList.size()==0) {
+				System.out.println("\n\tTotal Usage Rate: N/A");
+			} else {
 				float rate = facility.getUseLog().calcUsageRate();
 				System.out.println("\n\tTotal Usage Rate: "+rate);
 			}

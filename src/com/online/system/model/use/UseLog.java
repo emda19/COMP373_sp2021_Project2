@@ -29,9 +29,8 @@ public class UseLog implements IUseLog {
 	}
 
 	//Assigns a facility for use to a given user for a given time interval
-	public IUsage assignFacilityToUse(IUsage use) {
+	public void assignFacilityToUse(IUsage use) {
 		this.usages.add(use);
-		return use;
 	}
 
 	//Clears all usages of the facility

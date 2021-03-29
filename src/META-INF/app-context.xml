@@ -104,7 +104,7 @@
 		<property name="useInterval" ref="useInterval"/>
 	</bean>
 	
-	<bean id="facilityUser" class="com.online.system.model.use.FacilityUser"/>
-	<bean id="useInterval" class="com.online.system.model.use.UseInterval"/>
+	<bean id="facilityUser" class="com.online.system.model.use.FacilityUser"></bean>
+	<bean id="useInterval" class="com.online.system.model.use.UseInterval"></bean>
 
 </beans>

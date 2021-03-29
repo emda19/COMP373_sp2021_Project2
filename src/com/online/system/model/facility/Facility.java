@@ -63,6 +63,7 @@ public class Facility implements IFacility {
 		this.facilityInfo.setAddress(address);
 		this.facilityInfo.setFacilityManager(manager);
 		this.facilityInfo.setCapacity(capacity);
+		this.facilityInfo.setDateOpened(date);
 		return this.facilityInfo;
 	}
 
