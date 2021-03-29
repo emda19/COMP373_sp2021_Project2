@@ -6,7 +6,7 @@ public class FacilityManager implements IFacilityManager {
 	private String managerID;
 	private String firstName;
 	private String lastName;
-	private IPhone phoneNumber;
+	private IPhone phone;
 	
 	public FacilityManager() {}
 	
@@ -49,13 +49,13 @@ public class FacilityManager implements IFacilityManager {
 	}
 	
 	//Return the manager's phone number
-	public IPhone getPhoneNumber() {
-		return this.phoneNumber;
+	public IPhone getPhone() {
+		return this.phone;
 	}
 	
 	//Set the manager's phone number
-	public void setPhoneNumber(IPhone number) {
-		this.phoneNumber = number;
+	public void setPhone(IPhone number) {
+		this.phone = number;
 	}
 	
 	/*

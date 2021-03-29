@@ -9,10 +9,6 @@
 
 	<context:component-scan base-package="com.online.system" />
 	
-	<bean id="buildingsService" class="com.online.system.service.BuildingsService" scope="prototype">
-		<property name="buildings" ref="buildings" />
-	</bean>
-	
 	<bean id="buildings" class="com.online.system.model.facility.Buildings" scope="prototype">
 		<property name="facilities">
 			<list/>
@@ -24,27 +20,29 @@
 		</property>
 	</bean>
 	
+	<bean id="buildingsService" class="com.online.system.service.BuildingsService" scope="prototype">
+		<property name="buildings" ref="buildings" />
+	</bean>
+	
+	<bean id="phone" class="com.online.system.model.facility.Phone" scope="prototype"></bean>
+	<bean id="address" class="com.online.system.model.facility.Address" scope="prototype"></bean>
+	<bean id="capacity" class="com.online.system.model.facility.Capacity" scope="prototype"></bean>
+	<bean id="facilityManager" class="com.online.system.model.facility.FacilityManager" scope="prototype">
+		<property name="phone" ref="phone"/>
+	</bean>
+	
+	<bean id="facilityInfo" class="com.online.system.model.facility.FacilityInfo" scope="prototype">
+		<property name="address" ref="address"/>
+		<property name="facilityManager" ref="facilityManager"/>
+		<property name="capacity" ref="capacity"/>
+	</bean>
+	
 	<bean id="facility" class="com.online.system.model.facility.Facility" scope="prototype">
 		<property name="facilityInfo" ref="facilityInfo"/>
 		<property name="inspectionLog" ref="inspectionLog"/>
 		<property name="maintLog" ref="maintLog"/>
 		<property name="useLog" ref="useLog"/>
 	</bean>
-	
-	<bean id="phone" class="com.online.system.model.facility.Phone" scope="prototype"/>
-	<bean id="address" class="com.online.system.model.facility.Address" scope="prototype"/>
-	<bean id="capacity" class="com.online.system.model.facility.Capacity" scope="prototype"/>
-	
-	<bean id="facilityInfo" class="com.online.system.model.facility.FacilityInfo" scope="prototype">
-		<property name="address" ref="address"/>
-		<property name="manager" ref="manager"/>
-		<property name="capacity" ref="capacity"/>
-	</bean>
-	
-	<bean id="manager" class="com.online.system.model.facility.FacilityManager" scope="prototype">
-		<property name="phone" ref="phone"/>
-	</bean>
-	
 	
 	<bean id="inspection" class="com.online.system.model.inspection.Inspection" scope="prototype">
 	</bean>
@@ -81,13 +79,13 @@
 	</bean>
 	
 	<bean id="maintenance" class="com.online.system.model.maintenance.Maintenance" scope="prototype">
-		<property name="cost" ref="cost"/>
+		<property name="maintCost" ref="maintCost"/>
 	</bean>
 	
-	<bean id="request" class="com.online.system.model.maintenance.MaintRequest" scope="prototype">
+	<bean id="maintRequest" class="com.online.system.model.maintenance.MaintRequest" scope="prototype">
 	</bean>
 	
-	<bean id="cost" class="com.online.system.model.maintenance.MaintCost" scope="prototype"/>
+	<bean id="maintCost" class="com.online.system.model.maintenance.MaintCost" scope="prototype"/>
 	
 	
 	<bean id="useLog" class="com.online.system.model.use.UseLog" scope="prototype">
@@ -102,11 +100,11 @@
 	</bean>
 	
 	<bean id="usage" class="com.online.system.model.use.Usage" scope="prototype">
-		<property name="user" ref="user"/>
-		<property name="interval" ref="interval"/>
+		<property name="facilityUser" ref="facilityUser"/>
+		<property name="useInterval" ref="useInterval"/>
 	</bean>
 	
-	<bean id="user" class="com.online.system.model.use.Usage"/>
-	<bean id="interval" class="com.online.system.model.use.UseInterval"/>
+	<bean id="facilityUser" class="com.online.system.model.use.FacilityUser"/>
+	<bean id="useInterval" class="com.online.system.model.use.UseInterval"/>
 
 </beans>

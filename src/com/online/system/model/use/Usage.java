@@ -3,19 +3,19 @@ package com.online.system.model.use;
 /* This class holds information for each usage of a facility */
 public class Usage implements IUsage {
 
-	private IFacilityUser user;
+	private IFacilityUser facilityUser;
 	private IUseInterval useInterval;
 	
 	public Usage() {}
 	
 	//Set the facility user
-	public void setUser(IFacilityUser user) {
-		this.user = user;
+	public void setFacilityUser(IFacilityUser user) {
+		this.facilityUser = user;
 	}
 	
 	//Return the facility user
-	public IFacilityUser getUser() {
-		return this.user;
+	public IFacilityUser getFacilityUser() {
+		return this.facilityUser;
 	}
 	
 	//Set the date interval of this usage

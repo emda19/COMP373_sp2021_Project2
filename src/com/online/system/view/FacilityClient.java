@@ -12,11 +12,11 @@ import com.online.system.model.use.*;
 import com.online.system.service.BuildingsService;
 
 public class FacilityClient {
-// All objects created are interface objects, not classes
 	
 	public static void main(String[] args) {
 		
 		//Initialize ApplicationContext
+		@SuppressWarnings("resource")
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("META-INF/app-context.xml");
 		
 		//Company using this service
@@ -25,43 +25,47 @@ public class FacilityClient {
 		buildings.setCompanyName("Bob's Buildings");
 		
 		/* --Create a facility-- */
-		IFacility facility1 = (IFacility) appContext.getBean("facility");
+		IFacility facility1 = (IFacility) appContext.getBean("facility"); //ERROR 1!!!!!!!!!!!!!!!!!!!!!
 		
 		//Add the facility to the list of buildings
 		buildings.addNewFacility(facility1);
 		
 		/* --Create the facility info for facility1-- */
-		IFacilityInfo facilityInfo1 = (IFacilityInfo) appContext.getBean("facilityInfo");
+	//IFacilityInfo facilityInfo1 = (IFacilityInfo) appContext.getBean("facilityInfo");
+		IFacilityInfo facilityInfo1 = facility1.getFacilityInfo();
 		//Address
-		IAddress address1 = facilityInfo1.getFacilityAddress();
+		IAddress address1 = facilityInfo1.getAddress();
 		address1.setStreet("67434 Flower St.");
 		address1.setCity("Chicago");
 		address1.setState("IL");
 		address1.setZipcode("60660");
 		//Manager
-		IFacilityManager manager1 = (IFacilityManager) appContext.getBean("manager");
+	//IFacilityManager manager1 = (IFacilityManager) appContext.getBean("facilityManager");
+		IFacilityManager manager1 = facilityInfo1.getFacilityManager();
 		manager1.setManagerID("HV372");
 		manager1.setFirstName("Blake");
 		manager1.setLastName("Harrison");
 		//Phone For Manager
-		IPhone phone1 = manager1.getPhoneNumber();
+	//IPhone phone1 = (IPhone) appContext.getBean("phone");
+		IPhone phone1 = manager1.getPhone();
 		phone1.setAreaCode("312");
 		phone1.setPhoneNumber("9013896");
-		manager1.setPhoneNumber(phone1);
+	//manager1.setPhone(phone1);
 		//Capacity
+	//ICapacity capacity1 = (ICapacity) appContext.getBean("capacity");
 		ICapacity capacity1 = facilityInfo1.getCapacity();
 		capacity1.setNumTotalUnits(50);
 		capacity1.setNumRentedUnits(15);
 		//Info
 		facilityInfo1.setFacilityID("ZX873");
 		facilityInfo1.setFacilityName("Scoop Towers");
-		//facilityInfo1.setFacilityAddress(address1);
-		facilityInfo1.setFacilityManager(manager1);
-		//facilityInfo1.setCapacity(capacity1);
+	//facilityInfo1.setFacilityAddress(address1);
+	//facilityInfo1.setFacilityManager(manager1);
+	//facilityInfo1.setCapacity(capacity1);
 		facilityInfo1.setDateOpened("08/11/2011");
 		
 		//Associate Info with Facility
-		facility1.setFacilityInformation(facilityInfo1);
+	//facility1.setFacilityInformation(facilityInfo1);
 		
 		
 		/* --Create an Inspection Log-- */
@@ -93,7 +97,7 @@ public class FacilityClient {
 		maintLog1.setDaysRunning("08/11/2011", "05/02/2017");
 		
 		/* --Create a Maintenance Request-- */
-		IMaintRequest request1 = (IMaintRequest) appContext.getBean("request");
+		IMaintRequest request1 = (IMaintRequest) appContext.getBean("maintRequest");
 		request1.setRequestID("0325X");
 		request1.setDateRequested("04/07/2012");
 		request1.setRequestDescription("Exterminator needed for rat problems");
@@ -109,7 +113,7 @@ public class FacilityClient {
 		cost1.setMaterialCost(75.32);
 		
 		maintenance1.setScheduleID("YDB930");
-		//maintenance1.setMaintCost(cost1);
+		maintenance1.setMaintCost(cost1);
 		maintenance1.setScheduleDate("04/10/2012");
 		//Add the maintenance job to the log
 		maintLog1.scheduleMaintenance(maintenance1);
@@ -122,7 +126,7 @@ public class FacilityClient {
 		/* --Create First Usage-- */
 		IUsage usage1 = (IUsage) appContext.getBean("usage");
 		//User for Usage1
-		IFacilityUser user1 = usage1.getUser();
+		IFacilityUser user1 = usage1.getFacilityUser();
 		user1.setUserID("JKS742");
 		user1.setFirstName("E., Claire");
 		user1.setLastName("Baker");
@@ -133,15 +137,15 @@ public class FacilityClient {
 		interval1.setEndDate("02/01/2013");
 		interval1.setDaysUsed(); //calculates days used based on start & end date
 		
-		//usage1.setUser(user1);
-		//usage1.setUseInterval(interval1);
+		usage1.setFacilityUser(user1);
+		usage1.setUseInterval(interval1);
 		//Add usage1 to the log
 		useLog1.assignFacilityToUse(usage1);
 		
 		/* --Create Second Usage-- */
 		IUsage usage2 = (IUsage) appContext.getBean("usage");
 		//User for Usage2
-		IFacilityUser user2 = usage2.getUser();
+		IFacilityUser user2 = usage2.getFacilityUser();
 		user2.setUserID("LDB934");
 		user2.setFirstName("Petunia");
 		user2.setLastName("Gardener");
@@ -152,8 +156,8 @@ public class FacilityClient {
 		interval2.setEndDate("05/30/2013");
 		interval2.setDaysUsed(); //calculates days in use based on start & end date
 		
-		//usage2.setUser(user2);
-		//usage2.setUseInterval(interval2);
+		usage2.setFacilityUser(user2);
+		usage2.setUseInterval(interval2);
 		//Add usage2 to the log
 		useLog1.assignFacilityToUse(usage2);
 		
@@ -161,23 +165,26 @@ public class FacilityClient {
 		IFacility facility2 = (IFacility) appContext.getBean("facility");
 		buildings.addNewFacility(facility2);
 		//Address
-		IAddress address2 = (IAddress) appContext.getBean("address");
+		//IAddress address2 = (IAddress) appContext.getBean("address");
+		IAddress address2 = facility2.getFacilityInfo().getAddress();
 		address2.setStreet("0398 W. Hollywood St.");
 		address2.setCity("San Diego");
 		address2.setState("CA");
 		address2.setZipcode("92102");
 		//Manager
-		IFacilityManager manager2 = (IFacilityManager) appContext.getBean("manager");
+		//IFacilityManager manager2 = (IFacilityManager) appContext.getBean("facilityManager");
+		IFacilityManager manager2 = facility2.getFacilityInfo().getFacilityManager();
 		manager2.setManagerID("KM029");
 		manager2.setFirstName("Kate");
 		manager2.setLastName("Harbour");
 		//Phone For Manager
-		IPhone phone2 = manager2.getPhoneNumber();
+		IPhone phone2 = manager2.getPhone();
 		phone2.setAreaCode("619");
 		phone2.setPhoneNumber("3302648");
-		manager2.setPhoneNumber(phone2);
+	//manager2.setPhone(phone2);
 		//Capacity
-		ICapacity capacity2 = (ICapacity) appContext.getBean("capacity");
+		//ICapacity capacity2 = (ICapacity) appContext.getBean("capacity");
+		ICapacity capacity2 = facility2.getFacilityInfo().getCapacity();
 		capacity2.setNumTotalUnits(100);
 		capacity2.setNumRentedUnits(30);
 		//Manually fill out details
@@ -189,21 +196,23 @@ public class FacilityClient {
 		System.out.println("\n\t\t\t\t**--Facilities--**");
 		List<IFacility> listFacilities = buildings.listFacilities();
 		for (IFacility facility : listFacilities) {
-			System.out.println("\nName: "+facility.getFacilityInformation().getFacilityName());
-			System.out.println("Facility ID: "+facility.getFacilityInformation().getFacilityID());
-			System.out.println("Date opened: "+facility.getFacilityInformation().getDateOpened());
-			System.out.println("Manager: "+facility.getFacilityInformation().getFacilityManager().getFirstName()
-					+""+facility.getFacilityInformation().getFacilityManager().getLastName());
-			System.out.println("\t\tManager ID: "+facility.getFacilityInformation().getFacilityManager().getManagerID());
-			System.out.println("\t\tPhone: "+facility.getFacilityInformation().getFacilityManager().getPhoneNumber());
+			System.out.println("\nName: "+facility.getFacilityInfo().getFacilityName());
+			System.out.println("Facility ID: "+facility.getFacilityInfo().getFacilityID());
+			System.out.println("Date opened: "+facility.getFacilityInfo().getDateOpened());
+			System.out.println("Manager: "+facility.getFacilityInfo().getFacilityManager().getFirstName()
+					+""+facility.getFacilityInfo().getFacilityManager().getLastName());
+			System.out.println("\t\tManager ID: "+facility.getFacilityInfo().getFacilityManager().getManagerID());
+			String areaCode = facility.getFacilityInfo().getFacilityManager().getPhone().getAreaCode();
+			String phoneNumber = facility.getFacilityInfo().getFacilityManager().getPhone().getPhoneNumber();
+			System.out.println("\t\tPhone: "+areaCode+" "+phoneNumber);
 			System.out.println("Address:");
-			System.out.println("\t\t"+facility.getFacilityInformation().getFacilityAddress().getStreet());
-			System.out.println("\t\t"+facility.getFacilityInformation().getFacilityAddress().getCity());
-			System.out.println("\t\t"+facility.getFacilityInformation().getFacilityAddress().getState());
-			System.out.println("\t\t"+facility.getFacilityInformation().getFacilityAddress().getZipcode());
+			System.out.println("\t\t"+facility.getFacilityInfo().getAddress().getStreet());
+			System.out.println("\t\t"+facility.getFacilityInfo().getAddress().getCity());
+			System.out.println("\t\t"+facility.getFacilityInfo().getAddress().getState());
+			System.out.println("\t\t"+facility.getFacilityInfo().getAddress().getZipcode());
 			System.out.println("Capacity: ");
-			System.out.println("\t\tTotal Units: "+facility.getFacilityInformation().getCapacity().getNumTotalUnits());
-			System.out.println("\t\tRented Units: "+facility.getFacilityInformation().getCapacity().getNumRentedUnits());
+			System.out.println("\t\tTotal Units: "+facility.getFacilityInfo().getCapacity().getNumTotalUnits());
+			System.out.println("\t\tRented Units: "+facility.getFacilityInfo().getCapacity().getNumRentedUnits());
 			System.out.println("\t\tAvailable Units: "+facility.requestAvailableCapacity());
 			
 			/* --Print out Inspection Summary for each Facility-- */
@@ -219,7 +228,7 @@ public class FacilityClient {
 			
 			/* --Print out Maintenance Summary for each Facility-- */
 			/* --Requests-- */
-			List<IMaintRequest> requestList = facility.getMaintLog().listMaintRequests();
+			List<IMaintRequest> requestList = facility.getMaintLog().listRequests();
 			System.out.println("\t\t\t\nMaintenance Summary");
 			System.out.println("\nRequests:");
 // SINGLE NESTED FOR LOOP
@@ -268,14 +277,14 @@ public class FacilityClient {
 			
 			/* --Print out Usage Summary for each Facility-- */
 			System.out.println("\t\t\t\nUsage Summary");
-			List<IUsage> useLog = facility.getUseLog().listActualUsage();
+			List<IUsage> useLog = facility.getUseLog().listUsages();
 // SINGLED NESTED FOR LOOP
 			for (IUsage use : useLog) {
 				//User
-				String firstName = use.getUser().getFirstName();
-				String lastName = use.getUser().getLastName();
-				String userID = use.getUser().getUserID();
-				String unitNumber = use.getUser().getUnitNum();
+				String firstName = use.getFacilityUser().getFirstName();
+				String lastName = use.getFacilityUser().getLastName();
+				String userID = use.getFacilityUser().getUserID();
+				String unitNumber = use.getFacilityUser().getUnitNum();
 				System.out.println("\nUser: "+firstName+" "+lastName);
 				System.out.println("\t\tID#: "+userID);
 				System.out.println("\t\tUnit#: "+unitNumber);

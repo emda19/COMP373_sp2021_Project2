@@ -6,7 +6,7 @@ public class FacilityInfo implements IFacilityInfo {
 	private String facilityID;
 	private String name;
 	private IAddress address;
-	private IFacilityManager manager;
+	private IFacilityManager facilityManager;
 	private ICapacity capacity;
 	private String dateOpened;
 	
@@ -33,23 +33,23 @@ public class FacilityInfo implements IFacilityInfo {
 	}
 	
 	//Set the address of the facility
-	public void setFacilityAddress(IAddress ad) {
+	public void setAddress(IAddress ad) {
 		this.address = ad;
 	}
 		
 	//Return the address of the facility
-	public IAddress getFacilityAddress() {
+	public IAddress getAddress() {
 		return this.address;
 	}
 
 	//Set the manager of the facility
 	public void setFacilityManager(IFacilityManager manager) {
-		this.manager = manager;
+		this.facilityManager = manager;
 	}
 
 	//Return the manager of the facility
 	public IFacilityManager getFacilityManager() {
-		return this.manager;
+		return this.facilityManager;
 	}
 
 	//Set the capacity of the facility

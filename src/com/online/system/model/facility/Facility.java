@@ -7,7 +7,7 @@ import com.online.system.model.use.IUseLog;
 /* This class is used to manage the information and capacity associated with each facility */
 public class Facility implements IFacility {
 
-	private IFacilityInfo info;
+	private IFacilityInfo facilityInfo;
 	private I_InspectionLog inspectionLog;
 	private IMaintLog maintLog;
 	private IUseLog useLog;
@@ -40,30 +40,30 @@ public class Facility implements IFacility {
 	}
 	
 	//Set the set of information associated with a facility
-	public void setFacilityInformation(IFacilityInfo info) {
-		this.info = info;
+	public void setFacilityInfo(IFacilityInfo info) {
+		this.facilityInfo = info;
 	}
 	
 	//Return the set of information associated with a facility
-	public IFacilityInfo getFacilityInformation() {
-		return this.info;
+	public IFacilityInfo getFacilityInfo() {
+		return this.facilityInfo;
 	}
 
 	//Return the available units of a facility
 	public int requestAvailableCapacity() {
-		ICapacity capacity = this.info.getCapacity();
+		ICapacity capacity = this.facilityInfo.getCapacity();
 		return capacity.getNumAvailableUnits();
 	}
 
 	//Manually update the set of information associated with a facility
 	public IFacilityInfo addFacilityDetail(String id, String name, IAddress address, IFacilityManager manager,
 			ICapacity capacity, String date) {
-		this.info.setFacilityID(id);
-		this.info.setFacilityName(name);
-		this.info.setFacilityAddress(address);
-		this.info.setFacilityManager(manager);
-		this.info.setCapacity(capacity);
-		return this.info;
+		this.facilityInfo.setFacilityID(id);
+		this.facilityInfo.setFacilityName(name);
+		this.facilityInfo.setAddress(address);
+		this.facilityInfo.setFacilityManager(manager);
+		this.facilityInfo.setCapacity(capacity);
+		return this.facilityInfo;
 	}
 
 }

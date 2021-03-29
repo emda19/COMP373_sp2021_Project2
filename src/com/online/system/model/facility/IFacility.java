@@ -12,8 +12,8 @@ public interface IFacility {
 	public IMaintLog getMaintLog();
 	public void setUseLog(IUseLog log);
 	public IUseLog getUseLog();
-	public void setFacilityInformation(IFacilityInfo info);
-	public IFacilityInfo getFacilityInformation();
+	public void setFacilityInfo(IFacilityInfo info);
+	public IFacilityInfo getFacilityInfo();
 	public int requestAvailableCapacity();
 	public IFacilityInfo addFacilityDetail(String id, String name, IAddress address, IFacilityManager manager, ICapacity capacity, String date);
 	

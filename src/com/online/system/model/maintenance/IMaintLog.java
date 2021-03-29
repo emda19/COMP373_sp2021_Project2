@@ -5,12 +5,12 @@ import java.util.List;
 public interface IMaintLog {
 	
 	public void setDaysRunning(String start, String today);
-	public void setRequestLog(List<IMaintRequest> list);
+	public void setRequests(List<IMaintRequest> list);
 	public void setMaintSchedule(List<IMaintenance> list);
 	
 	public IMaintRequest makeFacilityMaintRequest(IMaintRequest request);
 	public IMaintenance scheduleMaintenance(IMaintenance maint);
-	public List<IMaintRequest> listMaintRequests();
+	public List<IMaintRequest> listRequests();
 	public List<IMaintenance> listMaintenance();
 	public List<String> listFacilityProblems();
 	public double calcMaintenanceCostForFacility();

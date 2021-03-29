@@ -1,7 +1,7 @@
 package com.online.system.model.maintenance;
 
 /* This class is used to hold information for the cost of maintenance */
-public class MaintCost {
+public class MaintCost implements IMaintCost {
 	private double laborCost;
 	private double materialCost;
 	private double totalCost;

@@ -25,6 +25,10 @@ public class Buildings implements IBuildings {
 		return this.facilities;
 	}
 	
+	public void setFacilities(List<IFacility> list) {
+		this.facilities = list;
+	}
+	
 	//Add a new facility to the list of total facilities
 	public IFacility addNewFacility(IFacility f) {
 		facilities.add(f);

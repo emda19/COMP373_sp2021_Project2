@@ -6,8 +6,8 @@ public interface IFacilityInfo {
 	public String getFacilityID();
 	public void setFacilityName(String name);
 	public String getFacilityName();
-	public void setFacilityAddress(IAddress ad);
-	public IAddress getFacilityAddress();
+	public void setAddress(IAddress ad);
+	public IAddress getAddress();
 	public void setFacilityManager(IFacilityManager manager);
 	public IFacilityManager getFacilityManager();
 	public void setCapacity(ICapacity capacity);

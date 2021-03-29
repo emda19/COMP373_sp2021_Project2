@@ -8,6 +8,6 @@ public interface IFacilityManager {
 	public void setFirstName(String first);
 	public String getLastName();
 	public void setLastName(String last);
-	public IPhone getPhoneNumber();
-	public void setPhoneNumber(IPhone number);
+	public IPhone getPhone();
+	public void setPhone(IPhone number);
 }

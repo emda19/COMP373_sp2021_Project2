@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /* This class keeps a record of all maintenance jobs for a facility */
 public class MaintLog implements IMaintLog {
 
-	private List<IMaintRequest> requestLog; //list of all maintenance requests
+	private List<IMaintRequest> requests; //list of all maintenance requests
 	private List<IMaintenance> maintSchedule; //list of all scheduled maintenance
 	private float daysRunning;
 	
@@ -30,8 +30,8 @@ public class MaintLog implements IMaintLog {
 	}
 
 	//Set a log of requests to the maintenance log
-	public void setRequestLog(List<IMaintRequest> list) {
-		this.requestLog = list;
+	public void setRequests(List<IMaintRequest> list) {
+		this.requests = list;
 	}
 
 	//Set a list of scheduled maintenance to the log
@@ -41,7 +41,7 @@ public class MaintLog implements IMaintLog {
 
 	//Submit a maintenance request for the facility, add it to the log
 	public IMaintRequest makeFacilityMaintRequest(IMaintRequest request) {
-		this.requestLog.add(request);
+		this.requests.add(request);
 		return request;
 	}
 
@@ -52,8 +52,8 @@ public class MaintLog implements IMaintLog {
 	}
 
 	//Return a list of all maintenance requests
-	public List<IMaintRequest> listMaintRequests() {
-		return this.requestLog;
+	public List<IMaintRequest> listRequests() {
+		return this.requests;
 	}
 
 	//Return a list of all scheduled maintenance jobs
@@ -64,7 +64,7 @@ public class MaintLog implements IMaintLog {
 	//Return a list of the facility's problems (descriptions of requests and jobs)
 	public List<String> listFacilityProblems() {
 		List<String> problems = new ArrayList<String>();
-		for (IMaintRequest m : this.requestLog) {
+		for (IMaintRequest m : this.requests) {
 			problems.add(m.getRequestDescription());
 		}
 		return problems;
@@ -88,7 +88,7 @@ public class MaintLog implements IMaintLog {
 
 	//Return the number of problem rate of the facility
 	public float calcProblemRateForFacility() {
-		int numProblems = this.requestLog.size();
+		int numProblems = this.requests.size();
 		float problemRate = numProblems / this.daysRunning;
 		return problemRate;
 	}
