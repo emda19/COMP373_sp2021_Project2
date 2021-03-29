@@ -6,6 +6,4 @@ public interface IUsage {
 	public IFacilityUser getUser();
 	public void setUseInterval(IUseInterval i);
 	public IUseInterval getUseInterval();
-	public void setDaysUsed(int daysUsed);
-	public int getDaysUsed();
 }

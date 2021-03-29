@@ -50,7 +50,7 @@ public class UseLog implements IUseLog {
 		int usages = this.useLog.size();
 		int days = 0;
 		for (IUsage u : this.useLog) {
-			days += u.getDaysUsed();
+			days += u.getUseInterval().getDaysUsed();
 		}
 		float rate = usages / days;
 		return rate;

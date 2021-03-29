@@ -5,7 +5,6 @@ public class Usage implements IUsage {
 
 	private IFacilityUser user;
 	private IUseInterval useInterval;
-	private int daysUsed;
 	
 	public Usage() {}
 	
@@ -27,15 +26,5 @@ public class Usage implements IUsage {
 	//Return the date interval of this usage
 	public IUseInterval getUseInterval() {
 		return this.useInterval;
-	}
-	
-	//Set the number of days of this usage
-	public void setDaysUsed(int daysUsed) {
-		this.daysUsed = daysUsed;
-	}
-	
-	//Return the number of days of this usage
-	public int getDaysUsed() {
-		return this.daysUsed;
 	}
 }

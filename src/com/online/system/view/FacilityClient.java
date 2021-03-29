@@ -124,16 +124,17 @@ public class FacilityClient {
 		//User for Usage1
 		IFacilityUser user1 = usage1.getUser();
 		user1.setUserID("JKS742");
-		user1.setFirstName("");
-		user1.setLastName("");
+		user1.setFirstName("E., Claire");
+		user1.setLastName("Baker");
+		user1.setUnitNum("#102");
 		//Use Interval for Usage1
 		IUseInterval interval1 = usage1.getUseInterval();
 		interval1.setStartDate("02/01/2012");
 		interval1.setEndDate("02/01/2013");
+		interval1.setDaysUsed(); //calculates days used based on start & end date
 		
 		//usage1.setUser(user1);
 		//usage1.setUseInterval(interval1);
-		usage1.setDaysUsed(365);
 		//Add usage1 to the log
 		useLog1.assignFacilityToUse(usage1);
 		
@@ -142,16 +143,17 @@ public class FacilityClient {
 		//User for Usage2
 		IFacilityUser user2 = usage2.getUser();
 		user2.setUserID("LDB934");
-		user2.setFirstName("");
-		user2.setLastName("");
+		user2.setFirstName("Petunia");
+		user2.setLastName("Gardener");
+		user2.setUnitNum("#502");
 		//Use Interval for Usage2
 		IUseInterval interval2 = usage2.getUseInterval();
 		interval2.setStartDate("05/30/2012");
 		interval2.setEndDate("05/30/2013");
+		interval2.setDaysUsed(); //calculates days in use based on start & end date
 		
 		//usage2.setUser(user2);
 		//usage2.setUseInterval(interval2);
-		usage2.setDaysUsed(365);
 		//Add usage2 to the log
 		useLog1.assignFacilityToUse(usage2);
 		
@@ -219,7 +221,6 @@ public class FacilityClient {
 			/* --Requests-- */
 			List<IMaintRequest> requestList = facility.getMaintLog().listMaintRequests();
 			System.out.println("\t\t\t\nMaintenance Summary");
-			System.out.println("Problems: ");
 			System.out.println("\nRequests:");
 // SINGLE NESTED FOR LOOP
 			for (IMaintRequest request : requestList) {
@@ -249,9 +250,46 @@ public class FacilityClient {
 					System.out.println("\t\tStatus: Pending");
 				}
 			}
+			//Problems
+			List<String> problems = facility.getMaintLog().listFacilityProblems();
+			System.out.println("\nFacility Problems List: ");
+// SINGLE NESTED FOR LOOP
+			for (String problem : problems) {
+				System.out.println(problem);
+			}
+			float problemRate = facility.getMaintLog().calcProblemRateForFacility();
+			System.out.println("Problem Rate: "+problemRate);
+			//Total Maintenance Costs for Facility
+			double totalCost = facility.getMaintLog().calcMaintenanceCostForFacility();
+			System.out.println("\nTotal Maintenance Costs: $"+totalCost);
+			//Down Time for Facility
+			float downTime = facility.getMaintLog().calcDownTimeForFacility();
+			System.out.println("\nTotal Down Time: "+downTime+" days");
 			
 			/* --Print out Usage Summary for each Facility-- */
-			
+			System.out.println("\t\t\t\nUsage Summary");
+			List<IUsage> useLog = facility.getUseLog().listActualUsage();
+// SINGLED NESTED FOR LOOP
+			for (IUsage use : useLog) {
+				//User
+				String firstName = use.getUser().getFirstName();
+				String lastName = use.getUser().getLastName();
+				String userID = use.getUser().getUserID();
+				String unitNumber = use.getUser().getUnitNum();
+				System.out.println("\nUser: "+firstName+" "+lastName);
+				System.out.println("\t\tID#: "+userID);
+				System.out.println("\t\tUnit#: "+unitNumber);
+				//Use Interval
+				String startDate = use.getUseInterval().getStartDate();
+				String endDate = use.getUseInterval().getEndDate();
+				long daysInUse = use.getUseInterval().getDaysUsed();
+				System.out.println("\t\tStart date: "+startDate);
+				System.out.println("\t\tEnd date: "+endDate);
+				System.out.println("\t\tDays in use interval: "+daysInUse);
+				//Usage Rate
+				float rate = facility.getUseLog().calcUsageRate();
+				System.out.println("\nTotal Usage Rate: "+rate);
+			}
 		}
 	}
 }
