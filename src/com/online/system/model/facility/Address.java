@@ -4,7 +4,6 @@ package com.online.system.model.facility;
 public class Address implements IAddress {
 
 	private String street;
-	private String unit;
 	private String city;
 	private String state;
 	private String zipcode;
@@ -28,16 +27,6 @@ public class Address implements IAddress {
 	//Set the Street Address
 	public void setStreet(String street) {
 		this.street = street;
-	}
-	
-	//Return the Building Unit Number
-	public String getUnit() {
-		return this.unit;
-	}
-	
-	//Set the Building Unit Number
-	public void setUnit(String unit) {
-		this.unit = unit;
 	}
 	
 	//Return the City

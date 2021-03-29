@@ -9,4 +9,25 @@
 
 	<context:component-scan base-package="com.online.system" />
 	
+	<bean id="buildingsService" class="com.online.system.service.BuildingsService" scope="prototype">
+		<property name="buildings" ref="buildings" />
+	</bean>
+	
+	<bean id="facility" class="com.online.system.model.facility.Facility" scope="prototype">
+		<property name="facilityInfo"></property>
+	</bean>
+	
+	<bean id="phone" class="com.online.system.model.facility.Phone" scope="prototype"/>
+	<bean id="address" class="com.online.system.model.facility.Address" scope="prototype"/>
+	<bean id="manager" class="com.online.system.model.facility.FacilityManager" scope="prototype">
+		<property name="phone" ref="phone"/>
+	</bean>
+	<bean id="capacity" class="com.online.system.model.facility.Capacity" scope="prototype"/>
+	
+	<bean id="facilityInfo" class="com.online.system.model.facility.FacilityInfo" scope="prototype">
+		<property name="address" ref="address"/>
+		<property name="manager" ref="manager"/>
+		<property name="capacity" ref="capacity"/>
+	</bean>
+
 </beans>

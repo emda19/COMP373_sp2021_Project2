@@ -8,7 +8,7 @@ public class Facility implements IFacility {
 	public Facility() {}
 
 	//Set the set of information associated with a facility
-	public void setFacilityInfo(IFacilityInfo info) {
+	public void setFacilityInformation(IFacilityInfo info) {
 		this.info = info;
 	}
 	
