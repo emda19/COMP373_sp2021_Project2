@@ -13,21 +13,48 @@
 		<property name="buildings" ref="buildings" />
 	</bean>
 	
+	<bean id="buildings" class="com.online.system.model.facility.Buildings" scope="prototype">
+		<property name="facilities">
+			<list/>
+			<!-- 
+			<list>
+				<ref bean="facility"/>
+			</list>
+			 -->
+		</property>
+	</bean>
+	
 	<bean id="facility" class="com.online.system.model.facility.Facility" scope="prototype">
 		<property name="facilityInfo"></property>
 	</bean>
 	
 	<bean id="phone" class="com.online.system.model.facility.Phone" scope="prototype"/>
 	<bean id="address" class="com.online.system.model.facility.Address" scope="prototype"/>
-	<bean id="manager" class="com.online.system.model.facility.FacilityManager" scope="prototype">
-		<property name="phone" ref="phone"/>
-	</bean>
 	<bean id="capacity" class="com.online.system.model.facility.Capacity" scope="prototype"/>
 	
 	<bean id="facilityInfo" class="com.online.system.model.facility.FacilityInfo" scope="prototype">
 		<property name="address" ref="address"/>
 		<property name="manager" ref="manager"/>
 		<property name="capacity" ref="capacity"/>
+	</bean>
+	
+	<bean id="manager" class="com.online.system.model.facility.FacilityManager" scope="prototype">
+		<property name="phone" ref="phone"/>
+	</bean>
+	
+	
+	<bean id="inspection" class="com.online.system.model.inspection.Inspection" scope="prototype">
+	</bean>
+	
+	<bean id="inspectionLog" class="com.online.system.model.inspection.InspectionLog" scope="prototype">
+		<property name="inspections">
+			<list/>
+			<!-- 
+			<list>
+				<ref bean="inspection"/>
+			</list>
+			 -->
+		</property>
 	</bean>
 
 </beans>

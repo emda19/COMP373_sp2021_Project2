@@ -22,7 +22,7 @@ public class FacilityClient {
 		IBuildings buildings = buildingsService.getBuildings(); //ArrayList of facilities created in global variables
 		buildings.setCompanyName("Bob's Buildings");
 		
-		//Create a facility
+		/* --Create a facility-- */
 		IFacility facility1 = (IFacility) appContext.getBean("facility");
 		
 		//Add the facility to the list of buildings
@@ -33,17 +33,17 @@ public class FacilityClient {
 		//Address
 		IAddress address1 = facilityInfo1.getFacilityAddress();
 		address1.setStreet("67434 Flower St.");
-		address1.setCity("");
-		address1.setState("");
-		address1.setZipcode("");
+		address1.setCity("Chicago");
+		address1.setState("IL");
+		address1.setZipcode("60660");
 		//Manager
-		IFacilityManager manager1 = facilityInfo1.getFacilityManager();
+		IFacilityManager manager1 = (IFacilityManager) appContext.getBean("manager");
 		manager1.setManagerID("HV372");
 		manager1.setFirstName("Blake");
 		manager1.setLastName("Harrison");
 		//Phone For Manager
 		IPhone phone1 = manager1.getPhoneNumber();
-		phone1.setAreaCode("496");
+		phone1.setAreaCode("312");
 		phone1.setPhoneNumber("9013896");
 		manager1.setPhoneNumber(phone1);
 		//Capacity
@@ -53,5 +53,37 @@ public class FacilityClient {
 		//Info
 		facilityInfo1.setFacilityID("ZX873");
 		facilityInfo1.setFacilityName("Scoop Towers");
+		//facilityInfo1.setFacilityAddress(address1);
+		facilityInfo1.setFacilityManager(manager1);
+		//facilityInfo1.setCapacity(capacity1);
+		facilityInfo1.setDateOpened("08/11/2011");
+		
+		//Associate Info with Facility
+		facility1.setFacilityInformation(facilityInfo1);
+		
+		
+		/* --Create an Inspection Log-- */
+		I_InspectionLog inspectionLog1 = (I_InspectionLog) appContext.getBean("inspectionLog");
+		
+		/* --Create an Inspection-- */
+		I_Inspection inspection1 = (I_Inspection) appContext.getBean("inspection");
+		inspection1.setInspectionID("938FN");
+		inspection1.setInspectionDate("03/20/2012");
+		inspection1.setInspectionDescription("Routine elevator inspection");
+		inspection1.setInspectionOutcome("Elevator is in proper working order");
+		//Add the inspection to the log
+		inspectionLog1.addInspection(inspection1);
+		/* --Create another Inspection-- */
+		I_Inspection inspection2 = (I_Inspection) appContext.getBean("inspection");
+		inspection2.setInspectionID("026RL");
+		inspection2.setInspectionDate("04/07/2012");
+		inspection2.setInspectionDescription("Routine check for pests");
+		inspection2.setInspectionOutcome("Rats found in the building");
+		//Add the inspection to the log
+		inspectionLog1.addInspection(inspection2);
+		
+		
+		/* --Create a Maintenance Log-- */
+		
 	}
 }

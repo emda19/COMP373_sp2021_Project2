@@ -1,11 +1,11 @@
 package com.online.system.model.facility;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /* This class is used to keep track of all facilities owned by a company */
 public class Buildings implements IBuildings {
 
-	private ArrayList<IFacility> facilities = new ArrayList<IFacility>();
+	private List<IFacility> facilities;
 	private String companyName;
 	
 	public Buildings() {}
@@ -21,7 +21,7 @@ public class Buildings implements IBuildings {
 	}
 	
 	//Return a list of all facilities in the system
-	public ArrayList<IFacility> listFacilities() {
+	public List<IFacility> listFacilities() {
 		return this.facilities;
 	}
 	
