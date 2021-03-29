@@ -114,11 +114,10 @@ public class FacilityClient {
 		IUseLog useLog1 = (IUseLog) appContext.getBean("useLog");
 		//Associate use log with facility1
 		facility1.setUseLog(useLog1);
-		
 		/* --Create First Usage-- */
 		IUsage usage1 = (IUsage) appContext.getBean("usage");
 		//User for Usage1
-		IFacilityUser user1 = usage1.getFacilityUser();
+	    IFacilityUser user1 = usage1.getFacilityUser();
 		user1.setUserID("JKS742");
 		user1.setFirstName("E., Claire");
 		user1.setLastName("Baker");
@@ -130,17 +129,16 @@ public class FacilityClient {
 		interval1.setDaysUsed(); //calculates days used based on start & end date
 		//Add usage1 to the log
 		useLog1.assignFacilityToUse(usage1);
-				
 		/* --Create Second Usage-- */
 		IUsage usage2 = (IUsage) appContext.getBean("usage");
 		//User for Usage2
-		IFacilityUser user2 = usage2.getFacilityUser();
+	    IFacilityUser user2 = usage2.getFacilityUser();
 		user2.setUserID("LDB934");
 		user2.setFirstName("Petunia");
 		user2.setLastName("Gardener");
 		user2.setUnitNum("#502");
 		//Use Interval for Usage2
-		IUseInterval interval2 = usage2.getUseInterval();
+	    IUseInterval interval2 = usage2.getUseInterval();
 		interval2.setStartDate("05/30/2012");
 		interval2.setEndDate("05/30/2013");
 		interval2.setDaysUsed(); //calculates days in use based on start & end date
